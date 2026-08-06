@@ -1,44 +1,137 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Strange Trader Dashboard</title>
+
+<title>Strange Trader OS</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
 <div class="bg"></div>
+
 <div class="container">
+
+<header>
+
 <h1>STRANGE TRADER</h1>
-<p class="sub">Market Session Dashboard</p>
 
-<div class="grid">
-<div class="card" data-zone="Asia/Tokyo">
-<h2>🇯🇵 Tokyo</h2>
-<div class="clock" id="tokyo">--:--:--</div>
-<div class="status" id="tokyoStatus"></div>
+<p>Trading • Discipline • Consistency</p>
+
+</header>
+
+<section class="cards">
+
+<div class="card">
+
+<div class="flag">🇯🇵</div>
+
+<h2>Tokyo</h2>
+
+<div id="tokyo" class="clock">00:00:00</div>
+
+<div id="tokyoStatus" class="closed">CLOSED</div>
+
+<div class="progress">
+
+<div id="tokyoBar"></div>
+
 </div>
 
-<div class="card" data-zone="Europe/London">
-<h2>🇬🇧 London</h2>
-<div class="clock" id="london">--:--:--</div>
-<div class="status" id="londonStatus"></div>
 </div>
 
-<div class="card" data-zone="America/New_York">
-<h2>🇺🇸 New York</h2>
-<div class="clock" id="newyork">--:--:--</div>
-<div class="status" id="newyorkStatus"></div>
-</div>
+<div class="card">
+
+<div class="flag">🇬🇧</div>
+
+<h2>London</h2>
+
+<div id="london" class="clock">00:00:00</div>
+
+<div id="londonStatus" class="closed">CLOSED</div>
+
+<div class="progress">
+
+<div id="londonBar"></div>
+
 </div>
 
-<div class="footer">
-<div id="utc"></div>
-<div id="date"></div>
 </div>
+
+<div class="card">
+
+<div class="flag">🇺🇸</div>
+
+<h2>New York</h2>
+
+<div id="newyork" class="clock">00:00:00</div>
+
+<div id="newyorkStatus" class="open">OPEN</div>
+
+<div class="progress">
+
+<div id="newyorkBar"></div>
+
 </div>
+
+</div>
+
+</section>
+
+<section class="info">
+
+<div class="box">
+
+<h3>ICT Kill Zone</h3>
+
+<p id="killzone">Waiting...</p>
+
+</div>
+
+<div class="box">
+
+<h3>UTC</h3>
+
+<p id="utc">00:00:00</p>
+
+</div>
+
+<div class="box">
+
+<h3>Local Time</h3>
+
+<p id="local">00:00:00</p>
+
+</div>
+
+<div class="box">
+
+<h3>Date</h3>
+
+<p id="date"></p>
+
+</div>
+
+</section>
+
+<footer>
+
+STRANGE TRADER OS
+
+</footer>
+
+</div>
+
 <script src="script.js"></script>
+
 </body>
+
 </html>
-<!-- v2 -->
