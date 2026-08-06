@@ -14,142 +14,145 @@
 
   <main class="dashboard">
 
-    <section class="session-grid">
+    <div class="terminal-shell">
 
-      <article class="card session-card" id="card-tokyo" data-session="tokyo">
-        <div class="card-glow"></div>
-        <header class="session-head">
-          <div class="session-id">
-            <span class="flag">🇯🇵</span>
-            <span class="city">TOKYO</span>
+      <section class="session-grid">
+
+        <article class="session-card" id="card-tokyo" data-session="tokyo">
+          <div class="card-glow"></div>
+          <header class="session-head">
+            <div class="session-id">
+              <span class="flag">🇯🇵</span>
+              <span class="city">Tokyo</span>
+            </div>
+            <div class="status-pill" id="status-tokyo">
+              <span class="status-dot"></span>
+              <span class="status-text">—</span>
+            </div>
+          </header>
+
+          <div class="clock" id="clock-tokyo">--:--:--</div>
+
+          <div class="countdown">
+            <span class="countdown-label" id="cd-label-tokyo">—</span>
+            <span class="countdown-value" id="cd-value-tokyo">--:--</span>
           </div>
-          <div class="status-pill" id="status-tokyo">
-            <span class="status-dot"></span>
-            <span class="status-text">—</span>
+
+          <div class="progress-row">
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-tokyo"></div>
+            </div>
+            <span class="progress-pct" id="progress-pct-tokyo">0%</span>
           </div>
-        </header>
+          <div class="session-range">00:00 – 09:00 UTC</div>
+        </article>
 
-        <div class="clock" id="clock-tokyo">--:--:--</div>
+        <article class="session-card" id="card-london" data-session="london">
+          <div class="card-glow"></div>
+          <header class="session-head">
+            <div class="session-id">
+              <span class="flag">🇬🇧</span>
+              <span class="city">London</span>
+            </div>
+            <div class="status-pill" id="status-london">
+              <span class="status-dot"></span>
+              <span class="status-text">—</span>
+            </div>
+          </header>
 
-        <div class="countdown">
-          <span class="countdown-label" id="cd-label-tokyo">—</span>
-          <span class="countdown-value" id="cd-value-tokyo">--:--</span>
-        </div>
+          <div class="clock" id="clock-london">--:--:--</div>
 
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-tokyo"></div>
-        </div>
-        <div class="progress-meta">
-          <span id="progress-pct-tokyo">0%</span>
-          <span class="session-hours">00:00–09:00 UTC</span>
-        </div>
-      </article>
-
-      <article class="card session-card" id="card-london" data-session="london">
-        <div class="card-glow"></div>
-        <header class="session-head">
-          <div class="session-id">
-            <span class="flag">🇬🇧</span>
-            <span class="city">LONDON</span>
+          <div class="countdown">
+            <span class="countdown-label" id="cd-label-london">—</span>
+            <span class="countdown-value" id="cd-value-london">--:--</span>
           </div>
-          <div class="status-pill" id="status-london">
-            <span class="status-dot"></span>
-            <span class="status-text">—</span>
+
+          <div class="progress-row">
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-london"></div>
+            </div>
+            <span class="progress-pct" id="progress-pct-london">0%</span>
           </div>
-        </header>
+          <div class="session-range">08:00 – 17:00 UTC</div>
+        </article>
 
-        <div class="clock" id="clock-london">--:--:--</div>
+        <article class="session-card" id="card-newyork" data-session="newyork">
+          <div class="card-glow"></div>
+          <header class="session-head">
+            <div class="session-id">
+              <span class="flag">🇺🇸</span>
+              <span class="city">New York</span>
+            </div>
+            <div class="status-pill" id="status-newyork">
+              <span class="status-dot"></span>
+              <span class="status-text">—</span>
+            </div>
+          </header>
 
-        <div class="countdown">
-          <span class="countdown-label" id="cd-label-london">—</span>
-          <span class="countdown-value" id="cd-value-london">--:--</span>
-        </div>
+          <div class="clock" id="clock-newyork">--:--:--</div>
 
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-london"></div>
-        </div>
-        <div class="progress-meta">
-          <span id="progress-pct-london">0%</span>
-          <span class="session-hours">08:00–17:00 UTC</span>
-        </div>
-      </article>
-
-      <article class="card session-card" id="card-newyork" data-session="newyork">
-        <div class="card-glow"></div>
-        <header class="session-head">
-          <div class="session-id">
-            <span class="flag">🇺🇸</span>
-            <span class="city">NEW YORK</span>
+          <div class="countdown">
+            <span class="countdown-label" id="cd-label-newyork">—</span>
+            <span class="countdown-value" id="cd-value-newyork">--:--</span>
           </div>
-          <div class="status-pill" id="status-newyork">
-            <span class="status-dot"></span>
-            <span class="status-text">—</span>
+
+          <div class="progress-row">
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-newyork"></div>
+            </div>
+            <span class="progress-pct" id="progress-pct-newyork">0%</span>
           </div>
-        </header>
+          <div class="session-range">13:00 – 22:00 UTC</div>
+        </article>
 
-        <div class="clock" id="clock-newyork">--:--:--</div>
+      </section>
 
-        <div class="countdown">
-          <span class="countdown-label" id="cd-label-newyork">—</span>
-          <span class="countdown-value" id="cd-value-newyork">--:--</span>
-        </div>
+      <div class="shell-divider"></div>
 
-        <div class="progress-track">
-          <div class="progress-fill" id="progress-newyork"></div>
-        </div>
-        <div class="progress-meta">
-          <span id="progress-pct-newyork">0%</span>
-          <span class="session-hours">13:00–22:00 UTC</span>
-        </div>
-      </article>
+      <section class="lower-grid">
 
-    </section>
+        <article class="market-card">
+          <h2 class="panel-title">Market Status</h2>
+          <div class="chip-row">
+            <div class="market-chip" id="market-forex">
+              <span class="status-dot"></span>
+              <span class="chip-label">Forex</span>
+              <span class="status-text">—</span>
+            </div>
+            <div class="market-chip" id="market-crypto">
+              <span class="status-dot"></span>
+              <span class="chip-label">Crypto</span>
+              <span class="status-text">—</span>
+            </div>
+            <div class="market-chip" id="market-us">
+              <span class="status-dot"></span>
+              <span class="chip-label">US Market</span>
+              <span class="status-text">—</span>
+            </div>
+          </div>
+        </article>
 
-    <section class="lower-grid">
+        <article class="time-card">
+          <h2 class="panel-title">World Clock</h2>
+          <div class="metrics-row">
+            <div class="metric">
+              <span class="metric-value" id="utc-time">--:--:--</span>
+              <span class="metric-label">UTC</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="local-time">--:--:--</span>
+              <span class="metric-label">Local</span>
+            </div>
+            <div class="metric">
+              <span class="metric-value" id="today-date">-- --- ----</span>
+              <span class="metric-label">Today</span>
+            </div>
+          </div>
+        </article>
 
-      <article class="card market-card">
-        <h2 class="panel-title">Market Status</h2>
-        <ul class="market-list">
-          <li class="market-row">
-            <span class="market-name"><span class="market-icon">⇄</span>Forex</span>
-            <span class="market-status" id="market-forex">
-              <span class="status-dot"></span><span class="status-text">—</span>
-            </span>
-          </li>
-          <li class="market-row">
-            <span class="market-name"><span class="market-icon">◈</span>Crypto</span>
-            <span class="market-status" id="market-crypto">
-              <span class="status-dot"></span><span class="status-text">—</span>
-            </span>
-          </li>
-          <li class="market-row">
-            <span class="market-name"><span class="market-icon">▤</span>US Market</span>
-            <span class="market-status" id="market-us">
-              <span class="status-dot"></span><span class="status-text">—</span>
-            </span>
-          </li>
-        </ul>
-      </article>
+      </section>
 
-      <article class="card time-card">
-        <h2 class="panel-title">World Clock</h2>
-        <ul class="time-list">
-          <li class="time-row">
-            <span class="time-name">UTC</span>
-            <span class="time-value" id="utc-time">--:--:--</span>
-          </li>
-          <li class="time-row">
-            <span class="time-name">Local</span>
-            <span class="time-value" id="local-time">--:--:--</span>
-          </li>
-          <li class="time-row">
-            <span class="time-name">Today</span>
-            <span class="time-value" id="today-date">-- --- ----</span>
-          </li>
-        </ul>
-      </article>
-
-    </section>
+    </div>
 
   </main>
 
