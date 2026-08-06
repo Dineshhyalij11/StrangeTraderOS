@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Strange Trader Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+<h1>STRANGE TRADER</h1>
+<p class="sub">Market Session Dashboard</p>
+
+<div class="grid">
+<div class="card" data-zone="Asia/Tokyo">
+<h2>🇯🇵 Tokyo</h2>
+<div class="clock" id="tokyo">--:--:--</div>
+<div class="status" id="tokyoStatus"></div>
+</div>
+
+<div class="card" data-zone="Europe/London">
+<h2>🇬🇧 London</h2>
+<div class="clock" id="london">--:--:--</div>
+<div class="status" id="londonStatus"></div>
+</div>
+
+<div class="card" data-zone="America/New_York">
+<h2>🇺🇸 New York</h2>
+<div class="clock" id="newyork">--:--:--</div>
+<div class="status" id="newyorkStatus"></div>
+</div>
+</div>
+
+<div class="footer">
+<div id="utc"></div>
+<div id="date"></div>
+</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
