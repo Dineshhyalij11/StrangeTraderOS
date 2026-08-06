@@ -1,240 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Forex Dashboard</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-<div class="background"></div>
+  <div class="bg-layer"></div>
 
-<div class="dashboard">
-
-    <!-- SESSION CARDS -->
+  <main class="dashboard">
 
     <section class="session-grid">
 
-        <div class="session-card">
+      <article class="card session-card" id="card-tokyo" data-session="tokyo">
+        <div class="card-glow"></div>
+        <header class="session-head">
+          <div class="session-id">
+            <span class="flag">🇯🇵</span>
+            <span class="city">TOKYO</span>
+          </div>
+          <div class="status-pill" id="status-tokyo">
+            <span class="status-dot"></span>
+            <span class="status-text">—</span>
+          </div>
+        </header>
 
-            <div class="session-name">
+        <div class="clock" id="clock-tokyo">--:--:--</div>
 
-                🇯🇵 TOKYO
-
-            </div>
-
-            <div id="tokyoClock" class="clock">
-
-                00:00:00
-
-            </div>
-
-            <div id="tokyoStatus" class="status">
-
-                OPEN
-
-            </div>
-
-            <div id="tokyoCountdown" class="countdown">
-
-                Closes in 00:00
-
-            </div>
-
-            <div class="progress">
-
-                <div id="tokyoProgress"></div>
-
-            </div>
-
+        <div class="countdown">
+          <span class="countdown-label" id="cd-label-tokyo">—</span>
+          <span class="countdown-value" id="cd-value-tokyo">--:--</span>
         </div>
 
-        <div class="session-card">
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-tokyo"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="progress-pct-tokyo">0%</span>
+          <span class="session-hours">00:00–09:00 UTC</span>
+        </div>
+      </article>
 
-            <div class="session-name">
+      <article class="card session-card" id="card-london" data-session="london">
+        <div class="card-glow"></div>
+        <header class="session-head">
+          <div class="session-id">
+            <span class="flag">🇬🇧</span>
+            <span class="city">LONDON</span>
+          </div>
+          <div class="status-pill" id="status-london">
+            <span class="status-dot"></span>
+            <span class="status-text">—</span>
+          </div>
+        </header>
 
-                🇬🇧 LONDON
+        <div class="clock" id="clock-london">--:--:--</div>
 
-            </div>
-
-            <div id="londonClock" class="clock">
-
-                00:00:00
-
-            </div>
-
-            <div id="londonStatus" class="status">
-
-                CLOSED
-
-            </div>
-
-            <div id="londonCountdown" class="countdown">
-
-                Opens in 00:00
-
-            </div>
-
-            <div class="progress">
-
-                <div id="londonProgress"></div>
-
-            </div>
-
+        <div class="countdown">
+          <span class="countdown-label" id="cd-label-london">—</span>
+          <span class="countdown-value" id="cd-value-london">--:--</span>
         </div>
 
-        <div class="session-card">
-
-            <div class="session-name">
-
-                🇺🇸 NEW YORK
-
-            </div>
-
-            <div id="newYorkClock" class="clock">
-
-                00:00:00
-
-            </div>
-
-            <div id="newYorkStatus" class="status">
-
-                OPEN
-
-            </div>
-
-            <div id="newYorkCountdown" class="countdown">
-
-                Closes in 00:00
-
-            </div>
-
-            <div class="progress">
-
-                <div id="newYorkProgress"></div>
-
-            </div>
-
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-london"></div>
         </div>
+        <div class="progress-meta">
+          <span id="progress-pct-london">0%</span>
+          <span class="session-hours">08:00–17:00 UTC</span>
+        </div>
+      </article>
+
+      <article class="card session-card" id="card-newyork" data-session="newyork">
+        <div class="card-glow"></div>
+        <header class="session-head">
+          <div class="session-id">
+            <span class="flag">🇺🇸</span>
+            <span class="city">NEW YORK</span>
+          </div>
+          <div class="status-pill" id="status-newyork">
+            <span class="status-dot"></span>
+            <span class="status-text">—</span>
+          </div>
+        </header>
+
+        <div class="clock" id="clock-newyork">--:--:--</div>
+
+        <div class="countdown">
+          <span class="countdown-label" id="cd-label-newyork">—</span>
+          <span class="countdown-value" id="cd-value-newyork">--:--</span>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-newyork"></div>
+        </div>
+        <div class="progress-meta">
+          <span id="progress-pct-newyork">0%</span>
+          <span class="session-hours">13:00–22:00 UTC</span>
+        </div>
+      </article>
 
     </section>
 
-    <!-- MARKET STATUS -->
+    <section class="lower-grid">
 
-    <section class="panel">
+      <article class="card market-card">
+        <h2 class="panel-title">Market Status</h2>
+        <ul class="market-list">
+          <li class="market-row">
+            <span class="market-name">Forex</span>
+            <span class="market-status" id="market-forex">
+              <span class="status-dot"></span><span class="status-text">—</span>
+            </span>
+          </li>
+          <li class="market-row">
+            <span class="market-name">Crypto</span>
+            <span class="market-status" id="market-crypto">
+              <span class="status-dot"></span><span class="status-text">—</span>
+            </span>
+          </li>
+          <li class="market-row">
+            <span class="market-name">US Market</span>
+            <span class="market-status" id="market-us">
+              <span class="status-dot"></span><span class="status-text">—</span>
+            </span>
+          </li>
+        </ul>
+      </article>
 
-        <div class="panel-title">
-
-            MARKET STATUS
-
-        </div>
-
-        <div class="market-grid">
-
-            <div>
-
-                <span>Forex</span>
-
-                <strong id="forexStatus">
-
-                    🟢 OPEN
-
-                </strong>
-
-            </div>
-
-            <div>
-
-                <span>Crypto</span>
-
-                <strong>
-
-                    🟢 OPEN
-
-                </strong>
-
-            </div>
-
-            <div>
-
-                <span>US Market</span>
-
-                <strong id="usStatus">
-
-                    🔴 CLOSED
-
-                </strong>
-
-            </div>
-
-        </div>
+      <article class="card time-card">
+        <h2 class="panel-title">World Clock</h2>
+        <ul class="time-list">
+          <li class="time-row">
+            <span class="time-name">UTC Time</span>
+            <span class="time-value" id="utc-time">--:--:--</span>
+          </li>
+          <li class="time-row">
+            <span class="time-name">Local Time</span>
+            <span class="time-value" id="local-time">--:--:--</span>
+          </li>
+          <li class="time-row">
+            <span class="time-name">Today's Date</span>
+            <span class="time-value" id="today-date">-- --- ----</span>
+          </li>
+        </ul>
+      </article>
 
     </section>
 
-    <!-- TIME PANEL -->
-
-    <section class="panel">
-
-        <div class="time-grid">
-
-            <div>
-
-                <small>UTC</small>
-
-                <h3 id="utcClock">
-
-                    00:00:00
-
-                </h3>
-
-            </div>
-
-            <div>
-
-                <small>LOCAL</small>
-
-                <h3 id="localClock">
-
-                    00:00:00
-
-                </h3>
-
-            </div>
-
-            <div>
-
-                <small>TODAY</small>
-
-                <h3 id="todayDate">
-
-                    Thursday, 06 August
-
-                </h3>
-
-            </div>
-
-        </div>
-
-    </section>
-
-</div>
+  </main>
 
 <script src="script.js"></script>
-
 </body>
-
 </html>
