@@ -29,13 +29,15 @@
   --border-hi:       rgba(255,255,255,0.10);
   --hairline:        rgba(255,255,255,0.06);
 
-  --sp-1: 8px;
-  --sp-2: 16px;
-  --sp-3: 24px;
-  --sp-4: 32px;
+  --sp-05: 4px;
+  --sp-1:  8px;
+  --sp-15: 12px;
+  --sp-2:  16px;
+  --sp-25: 20px;
 
-  --radius-lg: 24px;
-  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 7px;
 
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:    'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
@@ -88,39 +90,39 @@ body{
   border:1px solid var(--border);
   border-radius:var(--radius-lg);
   box-shadow:
-    0 1px 0 rgba(255,255,255,0.06) inset,
+    0 1px 0 rgba(255,255,255,0.05) inset,
     0 0 0 1px rgba(0,0,0,0.2),
-    0 4px 14px rgba(0,0,0,0.28),
-    0 24px 48px rgba(0,0,0,0.4);
+    0 1px 2px rgba(0,0,0,0.3),
+    0 10px 24px rgba(0,0,0,0.3);
   overflow:hidden;
   transition:
-    transform .45s var(--ease-out),
-    box-shadow .45s var(--ease-out),
-    border-color .45s var(--ease-smooth),
-    background .45s var(--ease-smooth);
+    transform .22s var(--ease-out),
+    box-shadow .22s var(--ease-out),
+    border-color .3s var(--ease-smooth),
+    background .3s var(--ease-smooth);
   will-change:transform;
 }
 
 .card:hover{
-  transform:translateY(-4px);
+  transform:translateY(-2px);
   background:var(--card-bg-hover);
   border-color:var(--border-hi);
   box-shadow:
-    0 1px 0 rgba(255,255,255,0.08) inset,
+    0 1px 0 rgba(255,255,255,0.07) inset,
     0 0 0 1px rgba(0,0,0,0.24),
-    0 6px 18px rgba(0,0,0,0.34),
-    0 32px 64px rgba(0,0,0,0.48);
+    0 2px 4px rgba(0,0,0,0.35),
+    0 16px 32px rgba(0,0,0,0.36);
 }
 
 /* ---------------------------------------------------------
    SESSION CARDS — clock dominates, everything else subtle
    --------------------------------------------------------- */
 .session-card{
-  padding:var(--sp-3) var(--sp-3) var(--sp-2);
+  padding:var(--sp-25) var(--sp-25) var(--sp-2);
   display:flex;
   flex-direction:column;
-  gap:var(--sp-2);
-  min-height:212px;
+  gap:var(--sp-15);
+  min-height:192px;
 }
 
 .card-glow{
@@ -157,7 +159,7 @@ body{
   line-height:1;
   filter:grayscale(0.55) saturate(0.5) brightness(0.92) drop-shadow(0 1px 2px rgba(0,0,0,0.5));
   opacity:0.75;
-  transition:opacity .4s var(--ease-smooth), filter .4s var(--ease-smooth);
+  transition:opacity .25s var(--ease-smooth), filter .25s var(--ease-smooth);
 }
 
 .card:hover .flag,
@@ -169,11 +171,12 @@ body{
 .city{
   font-family:var(--font-display);
   font-size:12px;
+  line-height:1;
   font-weight:700;
   letter-spacing:1.5px;
   text-transform:uppercase;
   color:var(--text-secondary);
-  transition:color .5s var(--ease-smooth);
+  transition:color .3s var(--ease-smooth);
 }
 
 .session-card.is-open .city{ color:var(--text-primary); }
@@ -182,12 +185,12 @@ body{
 .status-pill{
   display:flex;
   align-items:center;
-  gap:var(--sp-1);
-  padding:5px 11px 5px 8px;
+  gap:6px;
+  padding:4px 10px 4px 8px;
   border-radius:999px;
   background:var(--elevated-bg);
   border:1px solid var(--border-hi);
-  transition:background .5s var(--ease-smooth), border-color .5s var(--ease-smooth), box-shadow .5s var(--ease-smooth);
+  transition:background .3s var(--ease-smooth), border-color .3s var(--ease-smooth), box-shadow .3s var(--ease-smooth);
 }
 
 .status-dot{
@@ -196,17 +199,18 @@ body{
   border-radius:50%;
   background:var(--gray);
   flex-shrink:0;
-  transition:background .5s var(--ease-smooth), box-shadow .5s var(--ease-smooth);
+  transition:background .3s var(--ease-smooth), box-shadow .3s var(--ease-smooth);
 }
 
 .status-text{
   font-family:var(--font-mono);
   font-size:10px;
+  line-height:1;
   font-weight:700;
   letter-spacing:1.2px;
   color:var(--text-tertiary);
   text-transform:uppercase;
-  transition:color .5s var(--ease-smooth);
+  transition:color .3s var(--ease-smooth);
 }
 
 .status-pill.open{
@@ -255,7 +259,7 @@ body{
   color:var(--text-tertiary);
   align-self:center;
   padding-bottom:5px;
-  transition:color .6s var(--ease-smooth);
+  transition:color .3s var(--ease-smooth);
   opacity:0.55;
   animation:colonBlink 2s steps(1) infinite;
 }
@@ -273,7 +277,7 @@ body{
   width:40px;
   height:56px;
   perspective:220px;
-  border-radius:9px;
+  border-radius:var(--radius-md);
 }
 
 .flap-group:last-of-type .flap-card{
@@ -292,21 +296,21 @@ body{
   font-weight:800;
   color:var(--text-primary);
   background:linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.25) 100%), #141416;
-  border-radius:9px;
+  border-radius:var(--radius-md);
   border:1px solid var(--border-hi);
   box-shadow:
     0 1px 0 rgba(255,255,255,0.08) inset,
-    0 1px 3px rgba(0,0,0,0.5),
-    0 8px 18px rgba(0,0,0,0.32);
-  transition:filter .4s var(--ease-smooth);
+    0 1px 2px rgba(0,0,0,0.45),
+    0 6px 14px rgba(0,0,0,0.28);
+  transition:filter .25s var(--ease-smooth);
 }
 
-.card:hover .flap-card .flap-face{ filter:brightness(1.08); }
+.card:hover .flap-card .flap-face{ filter:brightness(1.06); }
 
 .flap-group:last-of-type .flap-face,
 .flap-group:last-of-type .flap-flip{
   font-size:21px;
-  border-radius:7px;
+  border-radius:var(--radius-sm);
 }
 
 .flap-card .flap-face::after{
@@ -332,14 +336,14 @@ body{
   font-weight:800;
   color:var(--text-primary);
   background:linear-gradient(180deg, rgba(255,255,255,0.09) 0%, rgba(0,0,0,0.3) 100%), #1b1b1d;
-  border-radius:9px;
+  border-radius:var(--radius-md);
   border:1px solid var(--border-hi);
   transform-origin:50% 100%;
   transform:rotateX(0deg);
   backface-visibility:hidden;
   pointer-events:none;
   opacity:0;
-  box-shadow:0 10px 20px rgba(0,0,0,0.4);
+  box-shadow:0 8px 16px rgba(0,0,0,0.35);
 }
 
 .flap-card.flipping .flap-flip{
@@ -366,6 +370,7 @@ body{
 
 .countdown-label{
   font-size:10.5px;
+  line-height:1;
   font-weight:600;
   color:var(--text-secondary);
   letter-spacing:1.1px;
@@ -375,10 +380,11 @@ body{
 .countdown-value{
   font-family:var(--font-mono);
   font-size:17px;
+  line-height:1;
   font-weight:800;
   color:var(--text-secondary);
   letter-spacing:0.5px;
-  transition:color .5s var(--ease-smooth);
+  transition:color .3s var(--ease-smooth);
   font-variant-numeric:tabular-nums;
 }
 
@@ -446,19 +452,21 @@ body{
 .progress-pct{
   font-family:var(--font-mono);
   font-size:11.5px;
+  line-height:1;
   font-weight:700;
   color:var(--text-tertiary);
   min-width:32px;
   text-align:right;
   font-variant-numeric:tabular-nums;
-  transition:color .5s var(--ease-smooth);
+  transition:color .3s var(--ease-smooth);
 }
 
 .session-card.is-open .progress-pct{ color:var(--text-primary); }
 
 .session-range{
   font-family:var(--font-mono);
-  font-size:9.5px;
+  font-size:10px;
+  line-height:1;
   font-weight:600;
   color:var(--text-tertiary);
   letter-spacing:0.4px;
@@ -468,16 +476,17 @@ body{
 /* ---------------------------------------------------------
    STAT CARDS — Market Status / World Clock
    --------------------------------------------------------- */
-.stat-card{ padding:var(--sp-3); }
+.stat-card{ padding:var(--sp-25); }
 
 .panel-title{
   font-family:var(--font-mono);
   font-size:10.5px;
+  line-height:1;
   font-weight:700;
   letter-spacing:2.2px;
   text-transform:uppercase;
   color:var(--text-secondary);
-  margin-bottom:var(--sp-2);
+  margin-bottom:var(--sp-15);
   display:flex;
   align-items:center;
   gap:var(--sp-1);
@@ -503,15 +512,15 @@ body{
   display:flex;
   align-items:center;
   gap:var(--sp-1);
-  padding:9px 14px;
+  padding:8px 12px;
   border-radius:999px;
   background:var(--elevated-bg);
   border:1px solid var(--border-hi);
-  transition:transform .35s var(--ease-out), box-shadow .35s var(--ease-smooth), background .35s var(--ease-smooth);
+  transition:transform .2s var(--ease-out), box-shadow .25s var(--ease-smooth), background .25s var(--ease-smooth);
 }
 
 .market-chip:hover{
-  transform:translateY(-2px);
+  transform:translateY(-1px);
   background:var(--elevated-bg-hi);
 }
 
@@ -519,6 +528,7 @@ body{
 
 .chip-label{
   font-size:12.5px;
+  line-height:1;
   font-weight:600;
   color:var(--text-secondary);
 }
@@ -529,7 +539,7 @@ body{
   border-color:rgba(47,224,160,0.28);
   box-shadow:0 0 14px rgba(47,224,160,0.12);
 }
-.market-chip.open:hover{ box-shadow:0 0 20px rgba(47,224,160,0.2); }
+.market-chip.open:hover{ box-shadow:0 0 16px rgba(47,224,160,0.18); }
 .market-chip.open .status-dot{
   background:var(--green-bright);
   box-shadow:0 0 9px rgba(47,224,166,0.85);
@@ -551,8 +561,8 @@ body{
 .metric{
   display:flex;
   flex-direction:column;
-  gap:6px;
-  padding:0 var(--sp-2);
+  gap:var(--sp-05);
+  padding:0 var(--sp-15);
   border-right:1px solid var(--hairline);
 }
 
@@ -562,17 +572,19 @@ body{
 .metric-value{
   font-family:var(--font-mono);
   font-size:22px;
+  line-height:1.1;
   font-weight:800;
   color:var(--text-primary);
   letter-spacing:0.3px;
   font-variant-numeric:tabular-nums;
-  transition:filter .4s var(--ease-smooth);
+  transition:filter .25s var(--ease-smooth);
 }
 
-.time-card:hover .metric-value{ filter:brightness(1.08); }
+.time-card:hover .metric-value{ filter:brightness(1.06); }
 
 .metric-label{
   font-size:10px;
+  line-height:1;
   font-weight:700;
   letter-spacing:1.5px;
   text-transform:uppercase;
@@ -593,7 +605,7 @@ body{
   body{ padding:16px; }
   .dashboard{ grid-template-columns:1fr; gap:var(--sp-1); }
 
-  .session-card{ min-height:auto; padding:var(--sp-2) var(--sp-2) var(--sp-2); }
+  .session-card{ min-height:auto; padding:var(--sp-2); gap:var(--sp-1); }
   .stat-card{ padding:var(--sp-2); }
 
   .flap-card{ width:32px; height:44px; }
@@ -607,7 +619,7 @@ body{
   .metric{ border-right:none; padding:0 0 var(--sp-1); border-bottom:1px solid var(--hairline); }
   .metric:last-child{ border-bottom:none; padding-bottom:0; }
 
-  .card:hover{ transform:translateY(-2px); }
+  .card:hover{ transform:translateY(-1px); }
 }
 
 @media (max-width: 380px){
