@@ -1,8 +1,8 @@
 /* ============================================================
-   FOREX SESSION DASHBOARD — TERMINAL EDITION JS
-   Split-flap clock renderer, real timezones, session logic
-   No HTML structure changes — flap markup is injected into the
-   existing .clock containers at runtime.
+   FOREX SESSION DASHBOARD — JS
+   Split-flap clock renderer, real timezones, session logic.
+   Functionality unchanged — only the CSS/markup around it
+   has been redesigned.
    ============================================================ */
 
 (function () {
@@ -15,7 +15,7 @@
   ];
 
   const els = {};
-  const flapState = {}; // last-rendered character per digit cell, keyed by clockKey-index
+  const flapState = {};
 
   function cacheEls() {
     SESSIONS.forEach((s) => {
@@ -41,13 +41,12 @@
   }
 
   /* -----------------------------------------------------------
-     SPLIT-FLAP CLOCK — built entirely by JS into .clock divs
+     SPLIT-FLAP CLOCK — HH : MM : SS, built into .clock at runtime
      ----------------------------------------------------------- */
   function buildFlapClock(container) {
     container.innerHTML = "";
     container.dataset.flapBuilt = "true";
 
-    // HH : MM : SS  ->  group(2 digits) colon group(2) colon group(2)
     const groups = [2, 2, 2];
     groups.forEach((count, gi) => {
       const group = document.createElement("div");
@@ -77,26 +76,22 @@
     const key = container.id + "-" + index;
     const prev = flapState[key];
 
-    if (prev === char) return; // no change, skip animation
+    if (prev === char) return;
     flapState[key] = char;
 
     const face = cell.querySelector(".flap-face");
     const flip = cell.querySelector(".flap-flip");
 
     if (prev === undefined) {
-      // first render — no animation, just set
       face.textContent = char;
       flip.textContent = char;
       return;
     }
 
-    // animate: flip layer shows OLD char and rotates away,
-    // revealing the NEW char already set on the face underneath
     flip.textContent = prev;
     face.textContent = char;
 
     cell.classList.remove("flipping");
-    // force reflow so the animation restarts cleanly
     void cell.offsetWidth;
     cell.classList.add("flipping");
 
@@ -104,7 +99,7 @@
     cell._flapTimeout = setTimeout(() => {
       cell.classList.remove("flipping");
       flip.textContent = char;
-    }, 400);
+    }, 440);
   }
 
   function renderFlapTime(container, hh, mm, ss) {
