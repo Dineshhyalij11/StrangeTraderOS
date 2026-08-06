@@ -50,10 +50,15 @@
 
 *{ margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
 
+html{
+  color-scheme:dark;
+}
+
 html, body{
   width:100%;
   min-height:100%;
-  background:transparent;
+  background:transparent !important;
+  background-color:transparent !important;
   font-family:var(--font-display);
   color:var(--text-primary);
   overflow-x:hidden;
@@ -65,7 +70,10 @@ body{
 }
 
 /* ---------------------------------------------------------
-   LAYOUT — flat grid, no wrapper card, auto-flowing rows
+   LAYOUT — flat grid, no wrapper card, no outer panel.
+   The dashboard root carries no background of its own —
+   it's a pure layout container. Cards float directly on
+   the transparent page.
    Desktop (3 cols): 3 sessions on row 1, the 2 stat cards
    fall naturally onto row 2 → "3 + 2".
    --------------------------------------------------------- */
@@ -73,6 +81,7 @@ body{
   width:98%;
   max-width:1800px;
   margin:0 auto;
+  background:transparent;
   display:grid;
   grid-template-columns:repeat(3, 1fr);
   gap:var(--sp-2);
