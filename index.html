@@ -1,132 +1,235 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Strange Trader OS</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Forex Dashboard</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div class="background"></div>
 
-<div class="container">
+<div class="dashboard">
 
-<header>
+    <!-- SESSION CARDS -->
 
-<h1>STRANGE TRADER</h1>
+    <section class="session-grid">
 
-<p>Trading • Discipline • Consistency</p>
+        <div class="session-card">
 
-</header>
+            <div class="session-name">
 
-<section class="cards">
+                🇯🇵 TOKYO
 
-<div class="card">
+            </div>
 
-<div class="flag">🇯🇵</div>
+            <div id="tokyoClock" class="clock">
 
-<h2>Tokyo</h2>
+                00:00:00
 
-<div id="tokyo" class="clock">00:00:00</div>
+            </div>
 
-<div id="tokyoStatus" class="closed">CLOSED</div>
+            <div id="tokyoStatus" class="status">
 
-<div class="progress">
+                OPEN
 
-<div id="tokyoBar"></div>
+            </div>
 
-</div>
+            <div id="tokyoCountdown" class="countdown">
 
-</div>
+                Closes in 00:00
 
-<div class="card">
+            </div>
 
-<div class="flag">🇬🇧</div>
+            <div class="progress">
 
-<h2>London</h2>
+                <div id="tokyoProgress"></div>
 
-<div id="london" class="clock">00:00:00</div>
+            </div>
 
-<div id="londonStatus" class="closed">CLOSED</div>
+        </div>
 
-<div class="progress">
+        <div class="session-card">
 
-<div id="londonBar"></div>
+            <div class="session-name">
 
-</div>
+                🇬🇧 LONDON
 
-</div>
+            </div>
 
-<div class="card">
+            <div id="londonClock" class="clock">
 
-<div class="flag">🇺🇸</div>
+                00:00:00
 
-<h2>New York</h2>
+            </div>
 
-<div id="newyork" class="clock">00:00:00</div>
+            <div id="londonStatus" class="status">
 
-<div id="newyorkStatus" class="open">OPEN</div>
+                CLOSED
 
-<div class="progress">
+            </div>
 
-<div id="newyorkBar"></div>
+            <div id="londonCountdown" class="countdown">
 
-</div>
+                Opens in 00:00
 
-</div>
+            </div>
 
-</section>
+            <div class="progress">
 
-<section class="info">
+                <div id="londonProgress"></div>
 
-<div class="box">
+            </div>
 
-<h3>ICT Kill Zone</h3>
+        </div>
 
-<p id="killzone">Waiting...</p>
+        <div class="session-card">
 
-</div>
+            <div class="session-name">
 
-<div class="box">
+                🇺🇸 NEW YORK
 
-<h3>UTC</h3>
+            </div>
 
-<p id="utc">00:00:00</p>
+            <div id="newYorkClock" class="clock">
 
-</div>
+                00:00:00
 
-<div class="box">
+            </div>
 
-<h3>Local Time</h3>
+            <div id="newYorkStatus" class="status">
 
-<p id="local">00:00:00</p>
+                OPEN
 
-</div>
+            </div>
 
-<div class="box">
+            <div id="newYorkCountdown" class="countdown">
 
-<h3>Date</h3>
+                Closes in 00:00
 
-<p id="date"></p>
+            </div>
 
-</div>
+            <div class="progress">
 
-</section>
+                <div id="newYorkProgress"></div>
 
-<footer>
+            </div>
 
-STRANGE TRADER OS
+        </div>
 
-</footer>
+    </section>
+
+    <!-- MARKET STATUS -->
+
+    <section class="panel">
+
+        <div class="panel-title">
+
+            MARKET STATUS
+
+        </div>
+
+        <div class="market-grid">
+
+            <div>
+
+                <span>Forex</span>
+
+                <strong id="forexStatus">
+
+                    🟢 OPEN
+
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>Crypto</span>
+
+                <strong>
+
+                    🟢 OPEN
+
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>US Market</span>
+
+                <strong id="usStatus">
+
+                    🔴 CLOSED
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- TIME PANEL -->
+
+    <section class="panel">
+
+        <div class="time-grid">
+
+            <div>
+
+                <small>UTC</small>
+
+                <h3 id="utcClock">
+
+                    00:00:00
+
+                </h3>
+
+            </div>
+
+            <div>
+
+                <small>LOCAL</small>
+
+                <h3 id="localClock">
+
+                    00:00:00
+
+                </h3>
+
+            </div>
+
+            <div>
+
+                <small>TODAY</small>
+
+                <h3 id="todayDate">
+
+                    Thursday, 06 August
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </section>
 
 </div>
 
