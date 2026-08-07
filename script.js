@@ -8,10 +8,16 @@
 (function () {
   "use strict";
 
+  /* start/end are LOCAL business hours at the venue (8am–5pm local
+     is the standard forex-session convention). Deriving the open/
+     closed window from local time — rather than a hardcoded UTC
+     window — keeps it correct through Daylight Saving changes,
+     since London and New York shift UTC offset twice a year and
+     Tokyo never does. */
   const SESSIONS = [
-    { key: "tokyo",   tz: "Asia/Tokyo",         start: 0,  end: 9  },
+    { key: "tokyo",   tz: "Asia/Tokyo",         start: 9,  end: 18 },
     { key: "london",  tz: "Europe/London",      start: 8,  end: 17 },
-    { key: "newyork", tz: "America/New_York",   start: 13, end: 22 }
+    { key: "newyork", tz: "America/New_York",   start: 8,  end: 17 }
   ];
 
   const els = {};
@@ -27,7 +33,8 @@
         cdLabel: document.getElementById(`cd-label-${s.key}`),
         cdValue: document.getElementById(`cd-value-${s.key}`),
         progressFill: document.getElementById(`progress-${s.key}`),
-        progressPct: document.getElementById(`progress-pct-${s.key}`)
+        progressPct: document.getElementById(`progress-pct-${s.key}`),
+        rangeLabel: document.querySelector(`#card-${s.key} .session-range`)
       };
     });
 
@@ -139,6 +146,32 @@
     return { hh: map.hour, mm: map.minute, ss: map.second };
   }
 
+  /* Whole-hour UTC offset for a timezone right now (e.g. London is
+     +0 in winter, +1 in summer; New York is -5 / -4). Used only to
+     render an accurate "HH:MM – HH:MM UTC" label alongside the
+     local-hour session logic above. */
+  const offsetFormatterCache = {};
+  function getUTCOffsetHours(tz, now) {
+    if (!offsetFormatterCache[tz]) {
+      offsetFormatterCache[tz] = new Intl.DateTimeFormat("en-US", {
+        timeZone: tz,
+        timeZoneName: "shortOffset"
+      });
+    }
+    const parts = offsetFormatterCache[tz].formatToParts(now);
+    const tzName = parts.find((p) => p.type === "timeZoneName");
+    if (!tzName) return 0;
+    const match = tzName.value.match(/GMT([+-]\d+)?/);
+    return match && match[1] ? parseInt(match[1], 10) : 0;
+  }
+
+  function formatSessionUTCRange(s, now) {
+    const offset = getUTCOffsetHours(s.tz, now);
+    const utcStart = ((s.start - offset) % 24 + 24) % 24;
+    const utcEnd = ((s.end - offset) % 24 + 24) % 24;
+    return `${pad(utcStart)}:00 – ${pad(utcEnd)}:00 UTC`;
+  }
+
   function sessionDuration(s) {
     return ((s.end - s.start + 24) % 24) || 24;
   }
@@ -222,17 +255,24 @@
      ----------------------------------------------------------- */
   function render() {
     const now = new Date();
-    const decHour = getUTCDecimalHour(now);
 
     SESSIONS.forEach((s) => {
       const e = els[s.key];
-      const state = sessionState(s, decHour);
 
       if (!e.clock.dataset.flapBuilt) {
         buildFlapClock(e.clock);
       }
       const parts = getZonedParts(now, s.tz);
       renderFlapTime(e.clock, parts.hh, parts.mm, parts.ss);
+
+      // Use this venue's own local hour (the same one the clock above
+      // shows) so OPEN/CLOSED always lines up with the displayed time,
+      // regardless of Daylight Saving in either the venue or the viewer.
+      const localDecHour =
+        parseInt(parts.hh, 10) +
+        parseInt(parts.mm, 10) / 60 +
+        parseInt(parts.ss, 10) / 3600;
+      const state = sessionState(s, localDecHour);
 
       setStatusPill(e.statusPill, e.statusText, state.open);
       e.card.classList.toggle("is-open", state.open);
@@ -242,6 +282,10 @@
 
       e.progressFill.style.width = `${state.pct}%`;
       e.progressPct.textContent = `${Math.round(state.pct)}%`;
+
+      if (e.rangeLabel) {
+        e.rangeLabel.textContent = formatSessionUTCRange(s, now);
+      }
     });
 
     const utcParts = getZonedParts(now, "UTC");
@@ -284,4 +328,3 @@
     init();
   }
 })();
- 
