@@ -676,7 +676,7 @@ body{
   min-height:0;
   border-radius:var(--radius-md);
   overflow:hidden;
-  background:var(--elevated-bg);
+  background:#131722; /* TradingView's own dark surface — avoids a white flash while the iframe loads */
   border:1px solid var(--border);
 }
 
